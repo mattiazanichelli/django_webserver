@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+### VS Code ###
+.vscode/
+
+# ISO #
+*.iso
+*.json
+error
+source-files/
