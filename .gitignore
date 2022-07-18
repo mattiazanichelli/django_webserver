@@ -131,6 +131,9 @@ dmypy.json
 ### VS Code ###
 .vscode/
 
+### PyCharm
+.idea/
+
 # ISO #
 *.iso
 *.json
