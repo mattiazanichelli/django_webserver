@@ -1,11 +1,11 @@
-function createTextBox() {
+function createTextBox(id) {
     const dockerImage = document.createElement('div');
     dockerImage.classList.add('form-floating', 'mb-3',);
 
     const input = document.createElement('input');
     input.setAttribute('type', 'text');
     input.classList.add('form-control');
-    const inputId = 'userInput';
+    const inputId = 'userInput' + id;
     input.setAttribute('id', inputId);
     input.setAttribute('name', 'dockerImage');
     input.setAttribute('placeholder', 'Docker image');
@@ -29,9 +29,8 @@ function createAddImageBtn() {
     return addImage;
 }
 
-const docker_images = document.getElementById('docker_images');
-function image_validator() {
-    console.log(docker_images)
+function image_validator(image) {
+    return docker_images.includes(image);
 }
 
 (function () {
@@ -42,14 +41,24 @@ function image_validator() {
 
     // check_image_existance('ubuntu');
 
+    let count = 0
     dockerSwitch.addEventListener('click', function (){
         if(dockerSwitch.checked) {
             const addImage = dockerImages.appendChild(createAddImageBtn());
             document.getElementById('warnings').style.display = '';
+
             addImage.addEventListener('click', function () {
-                console.log("I'm inside dockerInfo.js");
-                const image = createTextBox();
-                dockerImages.appendChild(image);
+                dockerImages.appendChild(createTextBox(count));
+                const input = document.getElementById('userInput' + count);
+                input.addEventListener('input', function () {
+                    if(!image_validator(input.value)) {
+                        input.classList.add('is-invalid')
+                    } else {
+                        input.classList.remove("is-invalid");
+                        input.classList.add('is-valid')
+                    }
+                });
+                count++;
             });
         } else {
             document.getElementById('warnings').style.display = 'none';

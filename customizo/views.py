@@ -29,6 +29,9 @@ def index_page(request):
 
 
 def form_page(request):
+    global docker_images
+    context = {"docker_images": docker_images}
+
     if request.method == 'POST':
 
         user = services.serialize_user(request.POST)
@@ -41,11 +44,8 @@ def form_page(request):
 
         global current_user
         current_user = user['last_name'] + '_' + user['first_name']
-
         return redirect('download')
 
-    global docker_images
-    context = {"docker_images": docker_images}
     if request.method == 'GET':
         return render(request, 'form.html', context=context)
 
