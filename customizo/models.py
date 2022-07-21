@@ -1,5 +1,9 @@
+import uuid
+
 from django.db import models
 from enum import Enum
+from typing import Optional
+from pydantic import BaseModel, Field
 import json
 
 
@@ -7,6 +11,16 @@ class OsType(Enum):
     INTRUSION_DETECTION = 1
     NETWORK_MONITORING = 2
 
+
+class User(BaseModel):
+    id: str = Field(default_factory=uuid.uuid4, alias="_id")
+    first_name: str = Field(...)
+    last_name: str = Field(...)
+    email: str = Field(...)
+    os_type: OsType = Field(...)
+    packages: Optional[list]
+    install_docker: bool = Field(...)
+    docker_images: Optional[list]
 
 # class User:
 #
@@ -48,4 +62,3 @@ class OsType(Enum):
 #
 #     def get_docker_images(self):
 #         return json.loads(self.docker_images)
-

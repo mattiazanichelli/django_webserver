@@ -1,6 +1,8 @@
 import json
 import os
 
+from ..models import OsType
+
 
 def extract_packages(body):
     split = body.decode("UTF-8").split("&")
@@ -38,15 +40,15 @@ def serialize_user(body):
         'first_name': fields['first_name'],
         'last_name': fields['last_name'],
         'email': fields['email'],
-        'os_type': fields['os_type'],
+        'os_type': OsType(int(fields['os_type'])).name.lower(),
         'install_docker': fields['install_docker']
     }
     return user
 
 
 def write_json(user):
-    user_json = json.dumps(user, indent=4)
-    file_name = user['last_name'] + user['first_name'] + ".json"
+    user_json = json.dumps(user)
+    file_name = user['last_name'] + '_' + user['first_name'] + ".json"
     with open("./customizo/resources/"+file_name, "w") as outfile:
         outfile.write(user_json)
 

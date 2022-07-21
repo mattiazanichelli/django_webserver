@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environs
+
+# Initialize environment variables
+env = environs.Env()
+environs.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,6 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure--rt2&zp)q7txpjtp13=)cmg!@a8@0me5xd7cu$3wzytu#oku5d'
+MONGO_HOST = env('MONGO_DB_HOST')
+MONGO_PORT = env('MONGO_DB_PORT')
+MONGO_USERNAME = env('MONGO_DB_USERNAME')
+MONGO_PASS = env('MONGO_DB_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,12 +86,24 @@ WSGI_APPLICATION = 'webserver.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': os.environ.get('MONGO_DB_NAME'),
+        'ENFORCE-SCHEMA': False,
+        'CLIENT': {
+            'host': os.environ.get('MONGO_DB_HOST'),
+            'port': os.environ.get('MONGO_DB_PORT'),
+            'username': os.environ.get('MONGO_DB_USERNAME'),
+            'password': os.environ.get('MONGO_DB_PASSWORD'),
+        },
+        'TEST': {
+            'MIRROR': 'default',
+        },
     }
 }
+'''
 
 
 # Password validation
