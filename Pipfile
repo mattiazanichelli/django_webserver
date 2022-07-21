@@ -8,6 +8,7 @@ django = "*"
 pymongo = "*"
 environs = "*"
 pydantic = "*"
+requests = "*"
 
 [dev-packages]
 

@@ -8,32 +8,46 @@ from pymongo import MongoClient
 
 from webserver.settings import MONGO_HOST, MONGO_PORT, MONGO_USERNAME, MONGO_PASS
 from .business_logic import services
-# from .models import User
 
+# Call async function to get docker images
+# thread = threading.Thread(target=services.get_docker_images(), daemon=True)
+# thread.start()
+# thread.join()
+docker_images = services.read_docker_images()
+
+
+# Create and activate Mongo database
 client = MongoClient(host=MONGO_HOST, port=int(MONGO_PORT), username=MONGO_USERNAME, password=MONGO_PASS)
 customizo = client['customizo']
 users = customizo['users']
 current_user = ""
 
 
+# Views
 def index_page(request):
     return render(request, 'index.html')
 
 
 def form_page(request):
     if request.method == 'POST':
+
         user = services.serialize_user(request.POST)
         user['packages'] = services.extract_packages(request.body)
         user['docker_images'] = services.extract_docker_images(request.body)
+
         services.write_json(user)
         users.insert_one(user)
         # services.generate_iso()
+
         global current_user
         current_user = user['last_name'] + '_' + user['first_name']
+
         return redirect('download')
 
+    global docker_images
+    context = {"docker_images": docker_images}
     if request.method == 'GET':
-        return render(request, 'form.html')
+        return render(request, 'form.html', context=context)
 
 
 def download_page(request):

@@ -29,47 +29,9 @@ function createAddImageBtn() {
     return addImage;
 }
 
-// function createDockerImagesDiv() {
-//     const dockerImages = document.createElement('div');
-//     dockerImages.setAttribute('id', 'dockerImages');
-//     dockerImages.classList.add('form-floating', 'mb-3', 'col-lg-4', 'text-dark');
-//
-//     return dockerImages;
-// }
-
-// function checkIfImageExists(dockerImage) {
-//     const promise = fetch(`https://hub.docker.com/_/${dockerImage}`);
-//     console.log(promise);
-//     let request = new XMLHttpRequest();
-//     request.open('GET', `https://hub.docker.com/_/${dockerImage}`, true);
-//     request.onreadystatechange = function() {
-//         if(request.readyState === 4) {
-//             if(request.status === 404) {
-//                 console.log("Oh no, it does not exist!")
-//                 // alert("Oh no, it does not exist!");
-//             }
-//         }
-//     };
-//     request.send();
-// }
-
-
-function insertWarning(parent) {
-    const typoWarning = document.createElement('p');
-    typoWarning.classList.add('text-warning');
-    typoWarning.textContent = 'Try to insert docker images correctly!' +
-        'Any docker image not correctly specified will not be insluded in the final system!';
-
-    const repoWarning = document.createElement('p');
-    repoWarning.classList.add('text-warning');
-    const link = document.createElement('a');
-    link.setAttribute('href', 'https://hub.docker.com/search?q=&operating_system=linux');
-    link.textContent = 'Docker Hub';
-    repoWarning.textContent = 'Please refer to the official' + link +
-        ' for information about images names';
-
-    parent.appendChild(typoWarning);
-    parent.appendChild(repoWarning);
+const docker_images = document.getElementById('docker_images');
+function image_validator() {
+    console.log(docker_images)
 }
 
 (function () {
@@ -78,12 +40,16 @@ function insertWarning(parent) {
     const dockerSwitch = document.getElementById('dockerSwitch');
     const dockerImages = document.getElementById('dockerImages');
 
+    // check_image_existance('ubuntu');
+
     dockerSwitch.addEventListener('click', function (){
         if(dockerSwitch.checked) {
             const addImage = dockerImages.appendChild(createAddImageBtn());
             document.getElementById('warnings').style.display = '';
             addImage.addEventListener('click', function () {
-               dockerImages.appendChild(createTextBox());
+                console.log("I'm inside dockerInfo.js");
+                const image = createTextBox();
+                dockerImages.appendChild(image);
             });
         } else {
             document.getElementById('warnings').style.display = 'none';
