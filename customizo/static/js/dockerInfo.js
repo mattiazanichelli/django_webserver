@@ -35,11 +35,8 @@ function image_validator(image) {
 
 (function () {
 
-    const form = document.getElementById('')
     const dockerSwitch = document.getElementById('dockerSwitch');
     const dockerImages = document.getElementById('dockerImages');
-
-    // check_image_existance('ubuntu');
 
     let count = 0
     dockerSwitch.addEventListener('click', function (){

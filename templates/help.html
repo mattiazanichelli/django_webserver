@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <base th:href="@{/}">
 </head>
 
 <body class="text-center bg-dark text-white d-flex flex-column min-vh-100">
@@ -20,7 +19,7 @@
             <h1 class="masthead-brand font-monospace text-decoration-underline mb-3 large">Customizo</h1>
             <h3 class="mb-5">customize your ISO</h3>
             <hr class="mb-3 border-2 border-top" style="margin-left: 25%; margin-right: 25%">
-            <ul class="nav justify-content-center mb-5">
+            <ul class="nav lead justify-content-center mb-5">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
@@ -37,15 +36,15 @@
     <main role="main">
         <h5 class="mb-5">How does it work?</h5>
         <p class="mb-5 container">This tool lets you create an ISO image based on Ubuntu Server 22.04 in which you can customize different aspect of your system (e.g. packages and Docker images) and create an automated installation.</p>
-        <div class="container d-flex flex-column text-start ">
-            <ol>
-                <li class="mb-3">
+        <div class="container d-flex flex-column text-start" style="padding-left: 5%">
+            <ul>
+                <li class="mb-4">
                     <p>Insert you information like name, surname and email. This information will be used to create a unique identifier for your ISO file.</p>
                 </li>
-                <li class="mb-3">
+                <li class="mb-4">
                     <p>Choose which type of operating system you want. After you choose an option, you can add your preferred packages to your system.</p>
                 </li>
-                <li class="mb-3">
+                <li class="mb-4">
                     <p>Choose whether you'd like to install Docker on your system.</p>
                     <p>If you choose to install Docker you'll be given the option to include your preferred docker images on your system.
                         You'll have to insert the name of the images that will be pulled from the Docker Hub with the official Docker commands (i.e. <i style="font-family:'Lucida Console', monospace">docker pull &#60image name&#62</i>).</p>
@@ -53,15 +52,15 @@
                         For example, if you want the <i>mongo</i> and <i>mongo express</i> images on your system, just type "mongo" and "mongo-express" in the text area.</p>
                     <p>You can refer to the <a href="https://hub.docker.com/search?q=&operating_system=linux" target="_blank">Docker Hub</a> for information on images name.</p>
                 </li>
-                <li class="mb-3">
+                <li class="mb-4">
                     <p>When the <i>Generate ISO</i> button appear, you can generate and then download your ISO.</p>
                 </li>
-                <li>
+                <li class="mb-4">
                     <p>Burn your ISO and start the installation. You'll be grated with the stock Ubuntu Server installation interface (i.e. Subiquity).</p>
                     <p>Fill the information required by the installer like language, keyboard layout, network configuration and identity. The rest will be taken care automatically.</p>
                     <p>Depending on the number of packages and images that you selected during the creation of the ISO this process may take several minutes. Please wait until a message stating that the installation has finished appear.</p>
                 </li>
-                <li>
+                <li class="mb-4">
                     <p>Restart your system and finish the installation.</p>
                     <p>If you chose to install Docker on your system, some additional configuration will be automatically executed:
                         a docker group will be created and the user created during the installation will be automatically added in order to give the permission
@@ -70,7 +69,7 @@
                         Once the system has rebooted, when you log in, the docker images you chose will be automatically pulled from the Docker Hub.</p>
                     <p>Like before, depending on the number of images you chose to pull, the size of them and your network connection, this process may take some time.</p>
                 </li>
-            </ol>
+            </ul>
         </div>
     </main>
     <footer class="mt-4 flex-column align-text-bottom">

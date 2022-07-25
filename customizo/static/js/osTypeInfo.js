@@ -6,7 +6,7 @@ function additionalInfo() {
 
 function createCheckBox(content) {
     let div = document.createElement("div");
-    div.classList.add("form-check", "text-start", "mb-3", "col-sm-4");
+    div.classList.add("form-check", "mb-3");
     let divID = "div_" + content;
     div.setAttribute("id", divID);
 
@@ -31,7 +31,6 @@ function createCheckBox(content) {
 (function () {
 
     const select = document.getElementById('osType');
-    const form = document.getElementById('register_form');
     const checkboxes = document.getElementById('checkboxes');
     const info = document.getElementById('additional_info');
 
@@ -42,21 +41,30 @@ function createCheckBox(content) {
             info.innerHTML = " ";
             info.append(additionalInfo());
             checkboxes.innerHTML = " ";
+            // Padding left to match Network Monitoring positions
+            checkboxes.setAttribute("style", "padding-left: 52px")
             checkboxes.appendChild(createCheckBox("aide"));
+            checkboxes.appendChild(createCheckBox("checksecurity"));
             checkboxes.appendChild(createCheckBox("iwatch"));
-            checkboxes.appendChild(createCheckBox("kismet"));
             checkboxes.appendChild(createCheckBox("packit"));
-            checkboxes.appendChild(createCheckBox("samhain"));
             checkboxes.appendChild(createCheckBox("snort"));
+            checkboxes.appendChild(createCheckBox("stenographer"));
+            checkboxes.appendChild(createCheckBox("suricata"));
             checkboxes.appendChild(createCheckBox("tiger"));
+            checkboxes.appendChild(createCheckBox("tripwire"));
 
         } else if (osType == 2 /* NETWORK MONITORING **/) {
             info.innerHTML = " ";
             info.append(additionalInfo());
             checkboxes.innerHTML = " ";
+            checkboxes.removeAttribute("style")
             checkboxes.appendChild(createCheckBox("etherape"));
+            checkboxes.appendChild(createCheckBox("fierce"));
             checkboxes.appendChild(createCheckBox("icinga2"));
             checkboxes.appendChild(createCheckBox("nagios4"));
+            checkboxes.appendChild(createCheckBox("netcat"));
+            checkboxes.appendChild(createCheckBox("netsed"));
+            checkboxes.appendChild(createCheckBox("nmap"));
             checkboxes.appendChild(createCheckBox("ssldump"));
             checkboxes.appendChild(createCheckBox("wireshark"));
             checkboxes.appendChild(createCheckBox("wmnet"));

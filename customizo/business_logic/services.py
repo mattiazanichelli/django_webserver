@@ -50,7 +50,7 @@ def serialize_user(body):
 
 def write_json(user):
     user_json = json.dumps(user)
-    file_name = user['last_name'] + '_' + user['first_name'] + ".json"
+    file_name = user['last_name'] + '-' + user['first_name'] + ".json"
     with open("./customizo/resources/" + file_name, "w") as outfile:
         outfile.write(user_json)
 
