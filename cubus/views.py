@@ -18,7 +18,7 @@ docker_images = services.read_docker_images()
 
 # Create and activate Mongo database
 client = MongoClient(host=MONGO_HOST, port=int(MONGO_PORT), username=MONGO_USERNAME, password=MONGO_PASS)
-customizo = client['customizo']
+customizo = client['cubus']
 users = customizo['users']
 current_user = ""
 
@@ -55,7 +55,7 @@ def download_page(request):
     if request.method == 'POST':
         file_name = current_user + '-custom-server.iso'
         # file_name = current_user + '.json'
-        file_path = os.curdir + '/customizo/resources/' + file_name
+        file_path = os.curdir + '/cubus/resources/' + file_name
         chunk_size = 8192
         mime_type = mimetypes.guess_type(file_path)[0]
         response = StreamingHttpResponse(FileWrapper(open(file_path, 'rb'), chunk_size), content_type=mime_type)

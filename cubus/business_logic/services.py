@@ -51,17 +51,17 @@ def serialize_user(body):
 def write_json(user):
     user_json = json.dumps(user)
     file_name = user['last_name'] + '-' + user['first_name'] + ".json"
-    with open("./customizo/resources/" + file_name, "w") as outfile:
+    with open("./cubus/resources/" + file_name, "w") as outfile:
         outfile.write(user_json)
 
 
 def generate_iso():
-    os.system(os.curdir + '/customizo/resources/./execute.sh')
+    os.system(os.curdir + '/cubus/resources/./execute.sh')
 
 
 def read_docker_images():
     docker_images = list()
-    with open("./customizo/resources/docker_images", "r") as infile:
+    with open("./cubus/resources/docker_images", "r") as infile:
         content = infile.read()
     docker_images = content.split("\n")
     return docker_images
