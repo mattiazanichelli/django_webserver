@@ -28,4 +28,4 @@ sudo update-initramfs -u
 # Self-remove script
 rm -- \"\$0\"")
 
-echo -e "${content}" > "${path}"/customizo/resources/source-files/custom/encrypt.sh
+echo -e "${content}" > "${path}"/cubus/resources/source-files/custom/encrypt.sh

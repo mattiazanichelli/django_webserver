@@ -2,7 +2,7 @@
 
 # Variable
 path=$(pwd)
-json=$(ls "${path}"/customizo/resources/*.json)
+json=$(ls "${path}"/cubus/resources/*.json)
 
 content=(
 "#!/bin/bash
@@ -13,13 +13,13 @@ echo \"===== Pulling Docker images from Docker Hub =====\"
 
 # Pull Docker images
 
-# Remove entry from .bashrc profile
-sed -i '$ d' .bashrc
+# Remove docker images entry from .bashrc profile
+sed -i 'N;\$!P;D' .bashrc
 
 # Self-remove script
 rm -f -- \"\$0\"")
 
-echo -e "${content}" > "${path}"/customizo/resources/source-files/custom/docker_images.sh
+echo -e "${content}" > "${path}"/cubus/resources/source-files/custom/docker_images.sh
 
 # Read docker images from json file
 length=$(cat "${json}" | jq '.docker_images | length')
@@ -44,6 +44,6 @@ done
 for ((i=0; i<=${#final_images[@]}; i++)) do
 	if [ ${final_images[$i]} ]
 	then
-		sed -i "/# Pull Docker images/a docker pull ${final_images[$i]}" "${path}"/customizo/resources/source-files/custom/docker_images.sh
+		sed -i "/# Pull Docker images/a docker pull ${final_images[$i]}" "${path}"/cubus/resources/source-files/custom/docker_images.sh
 	fi
 done

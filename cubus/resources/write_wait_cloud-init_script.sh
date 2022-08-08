@@ -19,6 +19,6 @@ echo -e \"\${content}\" > /etc/systemd/system/getty@tty1.service.d/wait_cloud-in
 # Self-remove script
 rm -- \"\$0\"")
 
-echo -e "${script_content}" > "${path}"/customizo/resources/source-files/custom/wait_cloud-init.sh
+echo -e "${script_content}" > "${path}"/cubus/resources/source-files/custom/wait_cloud-init.sh
 
 

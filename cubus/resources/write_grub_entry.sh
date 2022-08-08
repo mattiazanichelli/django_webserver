@@ -11,5 +11,5 @@ ${tab}${tab}linux	/casper/vmlinuz   ds=nocloud\\\\;s=/cdrom/custom/ quiet splash
 ${tab}${tab}initrd  /casper/initrd
 }")
 
-awk -v "content=${content}" "/grub_platform/ && !x {print content; x=1} 1" "${path}"/customizo/resources/source-files/boot/grub/grub.cfg > grub.cfg
-mv grub.cfg "${path}"/customizo/resources/source-files/boot/grub/grub.cfg
+awk -v "content=${content}" "/grub_platform/ && !x {print content; x=1} 1" "${path}"/cubus/resources/source-files/boot/grub/grub.cfg > grub.cfg
+mv grub.cfg "${path}"/cubus/resources/source-files/boot/grub/grub.cfg

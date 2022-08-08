@@ -2,7 +2,7 @@
 
 # Variable
 path=$(pwd)
-json=$(ls "${path}"/customizo/resources/*.json)
+json=$(ls "${path}"/cubus/resources/*.json)
 
 # Content of script docker_install.sh
 content=(
@@ -26,7 +26,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plu
 # Self-remove script
 rm -- \"\$0\"")
 
-echo -e "${content}" > "${path}"/customizo/resources/source-files/custom/docker_install.sh
+echo -e "${content}" > "${path}"/cubus/resources/source-files/custom/docker_install.sh
 
 # Write firstboot.service
 service=(
@@ -36,8 +36,8 @@ Description=One time boot script
 Type=simple
 Restart=no
 User=root
-ExecStart=/root/docker_setup.sh
+ExecStart=/root/firstboot_setup.sh
 [Install]
 WantedBy=multi-user.target")
 
-echo -e "${service}" > "${path}"/customizo/resources/source-files/custom/firstboot.service
+echo -e "${service}" > "${path}"/cubus/resources/source-files/custom/firstboot.service

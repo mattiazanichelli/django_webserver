@@ -2,8 +2,8 @@
 
 # Variables
 path=$(pwd)
-json=$(ls "${path}"/customizo/resources/*.json)
-iso=$(ls "${path}"/customizo/resources/*.iso)
+json=$(ls "${path}"/cubus/resources/*.json)
+iso=$(ls "${path}"/cubus/resources/*.iso)
 first_name=$(cat "${json}" | jq -r .first_name)
 last_name=$(cat "${json}" | jq -r .last_name)
 new_name=$(echo "${last_name}"-"${first_name}")
@@ -14,4 +14,4 @@ xorriso -as mkisofs -r -V "Custom Ubuntu Server" -J -joliet-long -l -iso-level 3
 -append_partition 2 28732ac11ff8d211ba4b00a0c93ec93b --interval:local_fs:2855516d-2864011d::"${iso}" \
 -appended_part_as_gpt -c /boot.catalog -b /boot/grub/i386-pc/eltorito.img -no-emul-boot -boot-load-size 4 \
 -boot-info-table --grub2-boot-info -eltorito-alt-boot -e '--interval:appended_partition_2:all::' -no-emul-boot\
- -o "${path}"/customizo/resources/"${new_name}"-custom-server.iso "${path}"/customizo/resources/source-files/
+ -o "${path}"/cubus/resources/"${new_name}"-custom-server.iso "${path}"/cubus/resources/source-files/
