@@ -3,7 +3,7 @@
 # Unzip sembo app if not already done
 if test -f sembo.zip; then
   unzip sembo.zip
-  rm sembo.zip -y
+  rm -f sembo.zip
   pip install -r sembo_app/requirements.txt
 fi
 
