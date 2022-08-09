@@ -13,13 +13,21 @@ lastName=$(cat "${json}" | jq -r .lastName)
 
 # Execute scripts cascade
 source "${path}"/cubus/resources/initiate.sh 2> error \
-&& source "${path}"/cubus/resources/write_encryption_script.sh 2> error \
-&& source "${path}"/cubus/resources/write_docker_install_script.sh 2> error \
 && source "${path}"/cubus/resources/write_firstboot_setup_script.sh 2> error \
+&& source "${path}"/cubus/resources/write_docker_install_script.sh 2> error \
 && source "${path}"/cubus/resources/write_docker_images_script.sh 2> error \
-&& source "${path}"/cubus/resources/write_grub_entry.sh 2> error \
 && source "${path}"/cubus/resources/write_wait_cloud-init_script.sh 2> error \
 && source "${path}"/cubus/resources/xorriso.sh 2>&1;
+
+# Original
+#source "${path}"/cubus/resources/initiate.sh 2> error \
+#&& source "${path}"/cubus/resources/write_encryption_script.sh 2> error \
+#&& source "${path}"/cubus/resources/write_docker_install_script.sh 2> error \
+#&& source "${path}"/cubus/resources/write_firstboot_setup_script.sh 2> error \
+#&& source "${path}"/cubus/resources/write_docker_images_script.sh 2> error \
+#&& source "${path}"/cubus/resources/write_grub_entry.sh 2> error \
+#&& source "${path}"/cubus/resources/write_wait_cloud-init_script.sh 2> error \
+#&& source "${path}"/cubus/resources/xorriso.sh 2>&1;
 
 # Remove source-files directory (ISO unzipped) and json user file
 rm -r "${path}"/cubus/resources/source-files/

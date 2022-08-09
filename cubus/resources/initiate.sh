@@ -155,6 +155,8 @@ sed -i "/packages/a \ \ \ \ - net-tools" "${path}"/cubus/resources/source-files/
 sed -i "/packages/a \ \ \ \ - unzip" "${path}"/cubus/resources/source-files/custom/user-data
 sed -i "/packages/a \ \ \ \ - python3-pip" "${path}"/cubus/resources/source-files/custom/user-data
 
+# Move grub.cfg file
+cp "${path}"/cubus/resources/grub.cfg "${path}"/cubus/resources/source-files/boot/grub/grub.cfg
 
 
 
