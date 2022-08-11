@@ -5,7 +5,16 @@ if test -f sembo.zip; then
   unzip sembo.zip
   rm -f sembo.zip
   pip install -r sembo_app/requirements.txt
-  touch ready
+
+  tot_cols=$(tput cols)
+  tot_lines=$(tput lines)
+  cols=$( expr "${tot_cols}" - 10 )
+  lines=$( expr "${tot_lines}" - 5 )
+
+  ip_addr=$(hostname -I | awk '{print $1}')
+  whiptail --title "Ready!" --msgbox "Done!\n\n
+  The system is now ready to use.\n\n
+  You can access SeMBo from http://${ip_addr}:8050 after closing this message" 15 60
 fi
 
 # Run sembo on the background

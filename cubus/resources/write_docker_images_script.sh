@@ -7,9 +7,6 @@ json=$(ls "${path}"/cubus/resources/*.json)
 content=(
 "#!/bin/bash
 
-# Show final installation setup messages
-source ./whiptails.sh
-
 # Pull Docker images
 
 # Remove docker images entry from .bashrc profile
