@@ -5,6 +5,7 @@ if test -f sembo.zip; then
   unzip sembo.zip
   rm -f sembo.zip
   pip install -r sembo_app/requirements.txt
+  touch ready
 fi
 
 # Run sembo on the background

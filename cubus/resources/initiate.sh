@@ -32,78 +32,9 @@ ${tab}packages:
 ${tab}ssh:
 ${tab}${tab}allow-pw: true
 ${tab}${tab}install-server: true
-#${tab}storage:
-#${tab}${tab}config:
-#${tab}${tab}- ptable: gpt
-#${tab}${tab}${tab}path: /dev/sda
-#${tab}${tab}${tab}wipe: superblock
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}name: ''
-#${tab}${tab}${tab}grub_device: true
-#${tab}${tab}${tab}type: disk
-#${tab}${tab}${tab}id: disk-sda
-#${tab}${tab}- device: disk-sda
-#${tab}${tab}${tab}size: 1048576
-#${tab}${tab}${tab}flag: bios_grub
-#${tab}${tab}${tab}number: 1
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}grub_device: false
-#${tab}${tab}${tab}type: partition
-#${tab}${tab}${tab}id: partition-0
-#${tab}${tab}- device: disk-sda
-#${tab}${tab}${tab}size: 600000000
-#${tab}${tab}${tab}wipe: superblock
-#${tab}${tab}${tab}flag: ''
-#${tab}${tab}${tab}number: 2
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}grub_device: false
-#${tab}${tab}${tab}type: partition
-#${tab}${tab}${tab}id: partition-1
-#${tab}${tab}- fstype: ext4
-#${tab}${tab}${tab}volume: partition-1
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}type: format
-#${tab}${tab}${tab}id: format-0
-#${tab}${tab}- device: disk-sda
-#${tab}${tab}${tab}size: -1
-#${tab}${tab}${tab}wipe: superblock
-#${tab}${tab}${tab}flag: ''
-#${tab}${tab}${tab}number: 3
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}grub_device: false
-#${tab}${tab}${tab}type: partition
-#${tab}${tab}${tab}id: partition-2
-#${tab}${tab}- volume: partition-2
-#${tab}${tab}${tab}key: '1234567890'
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}type: dm_crypt
-#${tab}${tab}${tab}id: dm_crypt-0
-#${tab}${tab}- name: ubuntu-vg
-#${tab}${tab}${tab}devices:
-#${tab}${tab}${tab}- dm_crypt-0
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}type: lvm_volgroup
-#${tab}${tab}${tab}id: lvm_volgroup-0
-#${tab}${tab}- name: ubuntu-lv
-#${tab}${tab}${tab}volgroup: lvm_volgroup-0
-#${tab}${tab}${tab}size: -1
-#${tab}${tab}${tab}wipe: superblock
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}type: lvm_partition
-#${tab}${tab}${tab}id: lvm_partition-0
-#${tab}${tab}- fstype: ext4
-#${tab}${tab}${tab}volume: lvm_partition-0
-#${tab}${tab}${tab}preserve: false
-#${tab}${tab}${tab}type: format
-#${tab}${tab}${tab}id: format-1
-#${tab}${tab}- path: /
-#${tab}${tab}${tab}device: format-1
-#${tab}${tab}${tab}type: mount
-#${tab}${tab}${tab}id: mount-1
-#${tab}${tab}- path: /boot
-#${tab}${tab}${tab}device: format-0
-#${tab}${tab}${tab}type: mount
-#${tab}${tab}${tab}id: mount-0
+${tab}storage:
+${tab}${tab}layout:
+${tab}${tab}${tab}name: lvm
 ${tab}package_update: true
 ${tab}package_upgrade: true
 ${tab}late-commands:
@@ -152,8 +83,8 @@ sed -i "/packages/a \ \ \ \ - ca-certificates" "${path}"/cubus/resources/source-
 
 # Add packages required for running SeMBo (net-tools, unzip, python3-pip)
 sed -i "/packages/a \ \ \ \ - net-tools" "${path}"/cubus/resources/source-files/custom/user-data
-sed -i "/packages/a \ \ \ \ - unzip" "${path}"/cubus/resources/source-files/custom/user-data
-sed -i "/packages/a \ \ \ \ - python3-pip" "${path}"/cubus/resources/source-files/custom/user-data
+#sed -i "/packages/a \ \ \ \ - unzip" "${path}"/cubus/resources/source-files/custom/user-data
+#ed -i "/packages/a \ \ \ \ - python3-pip" "${path}"/cubus/resources/source-files/custom/user-data
 
 # Move grub.cfg file
 cp "${path}"/cubus/resources/grub.cfg "${path}"/cubus/resources/source-files/boot/grub/grub.cfg

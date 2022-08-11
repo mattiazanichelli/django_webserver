@@ -23,6 +23,9 @@ echo \\
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
 
+# Install utilities for running sembo:
+sudo apt-get install -y unzip python3-pip
+
 # Self-remove script
 rm -- \"\$0\"")
 

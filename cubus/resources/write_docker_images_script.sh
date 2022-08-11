@@ -8,8 +8,7 @@ content=(
 "#!/bin/bash
 
 # Show final installation setup messages
-echo \"===== Performing final installation setup =====\"
-echo \"===== Pulling Docker images from Docker Hub =====\"
+source ./whiptails.sh
 
 # Pull Docker images
 
