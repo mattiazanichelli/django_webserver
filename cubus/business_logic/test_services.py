@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
                        b'dockerImage=alpine&dockerImage=busybox&dockerImage=mongo'
         self.assertEqual(extract_packages(body_example), [])
 
-    def test_extract_docker_images(self):
+    def test_extract_docker_images_1(self):
         body_example = b'csrfmiddlewaretoken=QSgp8CaZXDNR9fNcfaxg4wMjCsh7N2r8Zk4FkjEieMwI6YfbP6nmWOlQI9y5KoII&' \
                        b'first_name=Mattia&last_name=Zanichelli&email=mattia.zanichelli%40student.supsi.ch&' \
                        b'os_type=1&aide=on&checksecurity=on&stenographer=on&suricata=on&install_docker=on'
