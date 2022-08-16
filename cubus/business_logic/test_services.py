@@ -20,6 +20,16 @@ class Test(unittest.TestCase):
                        b'dockerImage=alpine&dockerImage=busybox&dockerImage=mongo'
         self.assertEqual(extract_packages(body_example), [])
 
+    def test_extract_packages_3(self):
+        body_example = b'csrfmiddlewaretoken=QSgp8CaZXDNR9fNcfaxg4wMjCsh7N2r8Zk4FkjEieMwI6YfbP6nmWOlQI9y5KoII&' \
+                       b'first_name=Mattia&last_name=Zanichelli&email=mattia.zanichelli%40student.supsi.ch&' \
+                       b'os_type=1&aide=on&checksecurity=on&iwatch=on&packit=on&snort=on&' \
+                       b'stenographer=on&suricata=on&tiger=on&tripwire=on&install_docker=on&' \
+                       b'dockerImage=alpine&dockerImage=busybox&dockerImage=mongo'
+        self.assertEqual(extract_packages(body_example),
+                         ['aide', 'checksecurity', 'iwatch', 'packit', 'snort', 'stenographer', 'suricata',
+                          'tiger', 'tripwire'])
+
     def test_extract_docker_images_1(self):
         body_example = b'csrfmiddlewaretoken=QSgp8CaZXDNR9fNcfaxg4wMjCsh7N2r8Zk4FkjEieMwI6YfbP6nmWOlQI9y5KoII&' \
                        b'first_name=Mattia&last_name=Zanichelli&email=mattia.zanichelli%40student.supsi.ch&' \
@@ -33,6 +43,15 @@ class Test(unittest.TestCase):
                        b'os_type=1&aide=on&checksecurity=on&stenographer=on&suricata=on&install_docker=on&' \
                        b'dockerImage=alpine&dockerImage=busybox&dockerImage=mongo'
         self.assertEqual(extract_docker_images(body_example), ['alpine', 'busybox', 'mongo'])
+
+    def test_extract_docker_images_3(self):
+        body_example = b'csrfmiddlewaretoken=QSgp8CaZXDNR9fNcfaxg4wMjCsh7N2r8Zk4FkjEieMwI6YfbP6nmWOlQI9y5KoII&' \
+                       b'first_name=Mattia&last_name=Zanichelli&email=mattia.zanichelli%40student.supsi.ch&' \
+                       b'os_type=1&aide=on&checksecurity=on&iwatch=on&packit=on&snort=on&' \
+                       b'stenographer=on&suricata=on&tiget=on&tripwire=on&install_docker=on&' \
+                       b'dockerImage=alpine&dockerImage=busbox&dockerImage=mongoDB'
+        self.assertNotEqual(extract_docker_images(body_example),
+                            ['alpine', 'busybox', 'mongo'])
 
     def test_serialize_user(self):
         post_example = {
@@ -103,7 +122,7 @@ class Test(unittest.TestCase):
         }
         self.assertNotEqual(serialize_user(post_example), user)
 
-    def test_write_json(self):
+    def test_json_file_name(self):
         post_example = {
             'csrfmiddlewaretoken': ['QSgp8CaZXDNR9fNcfaxg4wMjCsh7N2r8Zk4FkjEieMwI6YfbP6nmWOlQI9y5KoII'],
             'first_name': 'Mattia',

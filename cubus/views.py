@@ -9,11 +9,7 @@ from pymongo import MongoClient
 from webserver.settings import MONGO_HOST, MONGO_PORT, MONGO_USERNAME, MONGO_PASS
 from .business_logic import services
 
-# TODO: Find a way to get images online asynchronously
-# Call async function to get docker images
-# thread = threading.Thread(target=services.get_docker_images(), daemon=True)
-# thread.start()
-# thread.join()
+
 docker_images = services.read_docker_images()
 
 # Create and activate Mongo database
