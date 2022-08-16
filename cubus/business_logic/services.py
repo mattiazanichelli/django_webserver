@@ -1,7 +1,8 @@
 import json
 import os
+
+import django.http
 import requests
-from asgiref.sync import sync_to_async
 
 from ..models import OsType
 
@@ -36,8 +37,11 @@ def extract_docker_images(body):
     return user_docker_images
 
 
-def serialize_user(body):
-    fields = body.dict()
+def serialize_user(post):
+    if isinstance(post, django.http.QueryDict):
+        fields = post.dict()
+    else:
+        fields = post
     user = {
         'first_name': fields['first_name'],
         'last_name': fields['last_name'],
