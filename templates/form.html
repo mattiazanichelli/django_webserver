@@ -30,7 +30,7 @@
                     <a class="nav-link active" href="#">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'help' %}">Help</a>
+                    <a class="nav-link" href="{% url 'guide' %}">Guide</a>
                 </li>
             </ul>
 
@@ -75,7 +75,7 @@
             <h6 class="mb-3 mt-3">Docker options</h6>
             <div class="form-check form-switch  mb-3">
                 <input class="form-check-input" type="checkbox" id="dockerSwitch" name="install_docker">
-                <label class="form-check-label" for="dockerSwitch">Install Docker</label>
+                <label class="form-check-label" for="dockerSwitch">Include Docker images</label>
             </div>
             <div id="warnings" style="display: none">
                 <p class="text-warning">
@@ -99,10 +99,10 @@
             </div>
         </form>
     </main>
-    <footer class="mt-4 flex-column align-text-bottom">
-        <hr class="mt-4 mb-3 border-2 border-top" style="margin-left: 25%; margin-right: 25%">
+    <footer class="mt-5 flex-column align-text-bottom">
+        <hr class="mt-5 mb-3 border-2 border-top" style="margin-left: 25%; margin-right: 25%">
         <p>
-            Bottom footer A.K.A <a href="#">Copyright</a>
+            Created by Mattia Zanichelli
         </p>
     </footer>
 </div>

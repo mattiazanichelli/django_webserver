@@ -12,11 +12,13 @@ if test -f sembo.zip; then
   lines=$( expr "${tot_lines}" - 5 )
 
   ip_addr=$(hostname -I | awk '{print $1}')
-  whiptail --title "Ready!" --msgbox "Done!\n\n
-  The system is now ready to use.\n\n
-  You can access SeMBo from http://${ip_addr}:8050 after closing this message" 15 60
+  whiptail --title "Done!" --msgbox "The system is now ready to use!\n\nYou can access SeMBo from http://${ip_addr}:8050 after closing this message" 15 60
 fi
 
+# Show address message
+ip_addr=$(hostname -I | awk '{print $1}')
+echo "SeMBo is running at http://${ip_addr}:8050"
+
 # Run sembo on the background
-python3 sembo_app/app.py &
+python3 sembo_app/app.py > /dev/null &
 

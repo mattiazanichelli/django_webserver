@@ -69,5 +69,5 @@ def download_page(request):
             return render(request, 'download.html')
 
 
-def help_page(request):
-    return render(request, 'help.html')
+def guide_page(request):
+    return render(request, 'guide.html')

@@ -27,60 +27,53 @@
                         <a class="nav-link" href="{% url 'form' %}">Create</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'help' %}">Help</a>
+                        <a class="nav-link" href="{% url 'guide' %}">Guide</a>
                     </li>
                 </ul>
 
             </div>
         </header>
         <main role="main">
-            <h5 class="mb-4">Welcome!</h5>
+            <h5 class="mb-4">Welcome to Cubus!</h5>
             <p>
-                Here you can customize your Ubuntu Server ISO choosing which type of OS you'll be using and provide
-                a list of packages that you want to be included in your system.
+                Cubus let's you create a custom Ubuntu Server specifying the type of OS you'll be using and provide
+                a list of packages that you can autmatically include on your system.
             </p>
-            <p class="mb-5">You can also choose to install Docker on your system and include some images that will be pulled
-                and ready to be used on your server.</p>
-            <h5 class="mb-5">Recommended minimum system requirements:</h5>
+            <p>
+                You can also choose to include Docker images on your system that will be pulled
+                and ready to be used on your server.
+            </p>
+            <p>
+                You'll be also provided with a tool to monitor your system remotely.
+            </p>
+            <p class="mb-4">
+                For any additional information read the <a href="{% url 'guide' %}">Guide</a> page.
+            </p>
 
             <div class="container">
                 <div class="card-deck row justify-content-center">
-                    <div class="card col mx-5 text-center bg-dark text-light border-secondary">
-                        <h6 class="card-header text-center border-secondary">Physical hardware</h6>
+                    <div class="card col-6 mx-5 text-center bg-dark text-light border-secondary">
+                        <h6 class="card-header text-center border-secondary">Recommended minimum system requirements</h6>
                         <ul class="list-unstyled card-body">
-                            <li class="mb-2">2 GHz dual core processor</li>
-                            <li class="mb-2">4 GiB RAM (system memory)</li>
-                            <li class="mb-2">25 GB of hard drive space</li>
-                            <li class="mb-2">VGA capable of 1024×768 screen resolution</li>
-                            <li class="mb-2">Either a CD/DVD drive or a USB port for the installer media</li>
-                            <li class="mb-2">Internet access is helpful</li>
-                            <li class="mb-2">Recommended: 3D Acceleration Capable Videocard with at least 256 MB</li>
-                        </ul>
-                    </div>
-{#                    <p  class="col-2"></p>#}
-                    <div class="card col mx-5 text-center bg-dark text-light border-secondary">
-                        <h6 class="card-header border-secondary">Virtualization</h6>
-                        <ul class="list-unstyled mb-5 card-body">
-                            <li class="mb-2">2 GHz single core processor</li>
-                            <li class="mb-2">2 GiB RAM (system memory)</li>
-                            <li class="mb-2">25 GB of hard drive space</li>
-                            <li class="mb-2">It’s also advisable to dedicate 128 MB of video memory to your virtual machine.
-                            </li>
-                            <li class="mb-2">If possible, dedicating an extra CPU core, and an extra GB of RAM will greatly
-                            increase the
-                            responsiveness of your virtual machine</li>
+                            <li class="mb-3">2 GHz single core processor or more</li>
+                            <li class="mb-3">2 GB RAM (system memory) or more</li>
+                            <li class="mb-3">At least 10 GB of hard drive</li>
+                            <li class="mb-3">A USB port for the installer media (on physical hardware)</li>
+                            <li class="mb-3">Internet access is required</li>
+                            <li class="mb-3">If possible, dedicating an extra CPU core, and an extra GB of RAM will greatly
+                            increase the responsiveness of your system</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <h5 class="mt-5 mb-4">Start customizing your ISO!</h5>
+            <h5 class="mt-4 mb-4">Start customizing your ISO!</h5>
             <a type="button" class="btn btn-outline-primary btn-lg xl mb-3 fw-bold" style="height: 50px; width: 150px" href="{% url 'form' %}">Create!</a>
 
         </main>
-        <footer class="mt-4 flex-column align-text-bottom">
-            <hr class="mt-4 mb-3 border-2 border-top" style="margin-left: 25%; margin-right: 25%">
+        <footer class="mt-5 flex-column align-text-bottom">
+            <hr class="mt-5 mb-3 border-2 border-top" style="margin-left: 25%; margin-right: 25%">
             <p>
-                Bottom footer A.K.A <a href="#">Copyright</a>
+                Created by Mattia Zanichelli
             </p>
         </footer>
     </div>

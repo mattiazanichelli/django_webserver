@@ -7,6 +7,10 @@ json=$(ls "${path}"/cubus/resources/*.json)
 content=(
 "#!/bin/bash
 
+# Show final installation setup messages
+echo \"========== Performing final installation setup ==========\"
+echo \"========== Pulling Docker images from Docker Hub ==========\"
+
 # Pull Docker images
 
 # Remove docker images entry from .bashrc profile
