@@ -2,6 +2,17 @@
 
 # Unzip sembo app if not already done
 if test -f sembo.zip; then
+  printf "\n\n"
+  printf "%$(tput cols)s" | sed "s/ /=/g" | xargs
+  echo "Installing SeMBo"
+  printf "%$(tput cols)s" | sed "s/ /=/g" | xargs
+  printf "\n\n"
+
+  if ! [[ $(ping -c 3 8.8.8.8 2> /dev/null) ]]; then
+    whiptail --title "Warning" --msgbox "Cannot connect to the Internet.\n\nPlease connect your system to install SeMBo ." 15 60
+    exit 0
+  fi
+
   unzip sembo.zip
   rm -f sembo.zip
   pip install -r sembo_app/requirements.txt

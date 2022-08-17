@@ -7,9 +7,28 @@ json=$(ls "${path}"/cubus/resources/*.json)
 content=(
 "#!/bin/bash
 
+tot_cols=\$(tput cols)
+
 # Show final installation setup messages
-echo \"========== Performing final installation setup ==========\"
-echo \"========== Pulling Docker images from Docker Hub ==========\"
+printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
+echo \"Checking Internet connection\"
+printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
+
+if ! [[ \$(ping -c 3 8.8.8.8 2> /dev/null) ]]; then
+    whiptail --title \"Warning\" --msgbox \"Cannot connect to the Internet.\n\nPlease connect your system to complete the installation.\" 15 60
+    exit 0
+fi
+
+printf \"\n\n\"
+printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
+echo \"Performing final installation setup\"
+printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
+
+printf \"\n\n\"
+printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
+echo \"Pulling Docker images from Docker Hub\"
+printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
+printf \"\n\n\"
 
 # Pull Docker images
 
