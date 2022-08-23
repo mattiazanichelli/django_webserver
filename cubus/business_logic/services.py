@@ -1,5 +1,6 @@
 import json
 import os
+import crypt
 
 import django.http
 import requests
@@ -16,7 +17,7 @@ def extract_packages(body):
         key = tmp[0]
         value = tmp[1]
 
-        if value == "on" and not (key == "install_docker"):
+        if value == "on" and not (key == "include_docker_images"):
             packages.append(key)
 
     return packages
@@ -37,6 +38,19 @@ def extract_docker_images(body):
     return user_docker_images
 
 
+def serialize_iso(post):
+    if isinstance(post, django.http.QueryDict):
+        fields = post.dict()
+    else:
+        fields = post
+    iso = {
+        'name': fields['isoName'],
+        'os_type': OsType(int(fields['os_type'])).name.lower(),
+        'include_docker_images': fields['include_docker_images']
+    }
+    return iso
+
+
 def serialize_user(post):
     if isinstance(post, django.http.QueryDict):
         fields = post.dict()
@@ -46,17 +60,17 @@ def serialize_user(post):
         'first_name': fields['first_name'],
         'last_name': fields['last_name'],
         'email': fields['email'],
-        'os_type': OsType(int(fields['os_type'])).name.lower(),
-        'install_docker': fields['install_docker']
+        'password': crypt.crypt(fields['password'], 'salt'),
+        'creations': [],
     }
     return user
 
 
-def write_json(user):
-    user_json = json.dumps(user)
-    file_name = user['last_name'] + '-' + user['first_name'] + ".json"
+def write_json(iso):
+    iso_json = json.dumps(iso)
+    file_name = iso['name'] + ".json"
     with open("./cubus/resources/" + file_name, "w") as outfile:
-        outfile.write(user_json)
+        outfile.write(iso_json)
 
 
 def generate_iso():

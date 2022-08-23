@@ -24,10 +24,13 @@
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'form' %}">Create</a>
+                        <a class="nav-link" href="{% url 'create' %}">Create</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'guide' %}">Guide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">My Cubus</a>
                     </li>
                 </ul>
 
@@ -67,7 +70,7 @@
                 </div>
             </div>
             <h5 class="mt-4 mb-4">Start customizing your ISO!</h5>
-            <a type="button" class="btn btn-outline-primary btn-lg xl mb-3 fw-bold" style="height: 50px; width: 150px" href="{% url 'form' %}">Create!</a>
+            <a type="button" class="btn btn-outline-primary btn-lg xl mb-3 fw-bold" style="height: 50px; width: 150px" href="{% url 'create' %}">Create!</a>
 
         </main>
         <footer class="mt-5 flex-column align-text-bottom">

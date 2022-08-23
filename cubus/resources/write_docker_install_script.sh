@@ -2,7 +2,7 @@
 
 # Variable
 path=$(pwd)
-json=$(ls "${path}"/cubus/resources/*.json)
+#json=$(ls "${path}"/cubus/resources/*.json)
 
 # Content of script docker_install.sh
 content=(

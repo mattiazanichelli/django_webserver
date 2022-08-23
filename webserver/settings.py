@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+
+import django
 import environs
 
 # Initialize environment variables
@@ -20,7 +22,6 @@ environs.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -37,7 +38,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cubus'
+    'cubus',
 ]
 
 MIDDLEWARE = [
@@ -82,29 +82,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webserver.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': os.environ.get('MONGO_DB_NAME'),
-        'ENFORCE-SCHEMA': False,
-        'CLIENT': {
-            'host': os.environ.get('MONGO_DB_HOST'),
-            'port': os.environ.get('MONGO_DB_PORT'),
-            'username': os.environ.get('MONGO_DB_USERNAME'),
-            'password': os.environ.get('MONGO_DB_PASSWORD'),
-        },
-        'TEST': {
-            'MIRROR': 'default',
-        },
-    }
-}
-'''
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'mydatabase',
+#     }
+# }
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_COOKIE_HTTPONLY = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -124,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -135,7 +124,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

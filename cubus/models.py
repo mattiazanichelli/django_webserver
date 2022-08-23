@@ -1,64 +1,33 @@
-import uuid
-
-from django.db import models
+# import uuid
+# from django.db import models
+# from django.contrib.auth.models import AbstractUser
+# from typing import Optional
+# from pydantic import Field
 from enum import Enum
-from typing import Optional
-from pydantic import BaseModel, Field
-import json
 
 
 class OsType(Enum):
     INTRUSION_DETECTION = 1
     NETWORK_MONITORING = 2
 
+# class ISO:
+#
+#     def __init__(self):
+#         pass
+#
+#     # id: str = Field(default_factory=uuid.uuid4, alias="_id")
+#     name: str = Field(...)
+#     os_type: OsType = Field(...)
+#     packages: Optional[list]
+#     include_docker_images: bool = Field(...)
+#     docker_images: Optional[list]
 
-class User(BaseModel):
-    id: str = Field(default_factory=uuid.uuid4, alias="_id")
-    first_name: str = Field(...)
-    last_name: str = Field(...)
-    email: str = Field(...)
-    os_type: OsType = Field(...)
-    packages: Optional[list]
-    install_docker: bool = Field(...)
-    docker_images: Optional[list]
 
 # class User:
 #
-#     first_name: str
-#     last_name: str
-#     email: str
-#     os_type: OsType
-#     packagkes: list
-#     install_docker: bool
-#     docker_images: list
-#
-#     def __str__(self):
-#         return self.first_name + " " + self.last_name
-
-
-# class OsType(models.TextChoices):
-#     INTRUSION_DETECTION = 'ID', 'Intrusion Detection'
-#     NETWORK_MONITORING = 'NM', 'Network Monitoring'
-#
-#
-# class User(models.Model):
-#     # id = models.IntegerField(primary_key=True)
-#     first_name = models.CharField(max_length=50)
-#     last_name = models.CharField(max_length=50)
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
 #     email = models.CharField(max_length=100)
-#     os_type = models.IntegerField(default=0)
-#     packages = models.CharField(max_length=200, blank=True)
-#     install_docker = models.BooleanField(default=False)
-#     docker_images = models.CharField(max_length=200, blank=True)
-#
-#     def set_packages(self, packages_list):
-#         self.packages = json.dumps(packages_list)
-#
-#     def get_packages(self):
-#         return json.loads(self.packages)
-#
-#     def set_docker_images(self, images):
-#         self.docker_images = json.dumps(images)
-#
-#     def get_docker_images(self):
-#         return json.loads(self.docker_images)
+#     password: models.CharField(max_length=100)
+#     ISOs: Optional[list]
+

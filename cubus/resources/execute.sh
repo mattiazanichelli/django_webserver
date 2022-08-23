@@ -3,8 +3,9 @@
 # Variables
 path=$(pwd)
 json=$(ls "${path}"/cubus/resources/*.json)
-firstName=$(cat "${json}" | jq -r .firstName)
-lastName=$(cat "${json}" | jq -r .lastName)
+#firstName=$(cat "${json}" | jq -r .firstName)
+#lastName=$(cat "${json}" | jq -r .lastName)
+isoname=$(cat "${json}" | jq -r .name)
 
 
 # Need these packages in order to execute scripts correctly !!!
@@ -31,4 +32,4 @@ source "${path}"/cubus/resources/initiate.sh 2> error \
 
 # Remove source-files directory (ISO unzipped) and json user file
 rm -r "${path}"/cubus/resources/source-files/
-rm -f "${path}"/cubus/resources/"${lastName}"-"${firstName}".json
+rm -f "${path}"/cubus/resources/"${isoname}".json

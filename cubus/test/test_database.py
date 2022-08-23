@@ -6,8 +6,8 @@ from pymongo import MongoClient
 from webserver.settings import MONGO_HOST, MONGO_PORT, MONGO_USERNAME, MONGO_PASS
 
 client = MongoClient(host=MONGO_HOST, port=int(MONGO_PORT), username=MONGO_USERNAME, password=MONGO_PASS)
-customizo = client['cubus']
-users = customizo['users']
+cubus = client['cubus']
+users = cubus['users']
 
 '''
 REMEMBER TO START DOCKER-COMPOSE FIRST!
@@ -29,6 +29,24 @@ class Test(unittest.TestCase):
             'install_docker': 'on',
         }
         self.assertTrue(users.insert_one(user))
+
+    def test_find_one(self):
+        users.insert_one({
+            'first_name': 'Mattia',
+            'last_name': 'Zanichelli',
+            'email': 'mattia.zanichelli@student.supsi.ch',
+            'password': 'mypass'
+        })
+        user_id = users.find_one({'email': 'mattia.zanichelli@student.supsi.ch'})['_id']
+        self.assertEqual(users.find_one({'email': 'mattia.zanichelli@student.supsi.ch'}), {
+            '_id': user_id,
+            'first_name': 'Mattia',
+            'last_name': 'Zanichelli',
+            'email': 'mattia.zanichelli@student.supsi.ch',
+            'password': 'mypass'
+        })
+        user = users.find_one({'email': 'mattia.zanichelli@student.supsi.ch'})
+        users.delete_one(user)
 
     def test_remove_one(self):
         user = {

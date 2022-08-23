@@ -3,7 +3,7 @@
 # Variables
 path=$(pwd)
 json=$(ls "${path}"/cubus/resources/*.json)
-iso=$(ls "${path}"/cubus/resources/*.iso)
+iso=$(ls "${path}"/cubus/resources/ubuntu-22.04-live-server-amd64.iso*)
 tab=(\ \ )
 
 # Create directories, files an unzip
@@ -38,6 +38,7 @@ ${tab}${tab}${tab}name: lvm
 ${tab}package_update: true
 ${tab}package_upgrade: true
 ${tab}late-commands:
+${tab}${tab}- echo '=== Please wait for additional setup ==='
 ${tab}${tab}- curtin in-target --target=/target -- apt-get update
 ${tab}${tab}- curtin in-target --target=/target -- apt-get upgrade -y
 #${tab}${tab}- cp /cdrom/custom/encrypt.sh /target/root
@@ -58,7 +59,8 @@ ${tab}${tab}- curtin in-target --target=/target -- bash /root/wait_cloud-init.sh
 ${tab}${tab}- cp /cdrom/custom/sembo.zip /target/root
 ${tab}${tab}- cp /cdrom/custom/.run_sembo.sh /target/root
 ${tab}${tab}- curtin in-target --target=/target -- chmod +x /root/.run_sembo.sh
-${tab}${tab}- echo '===== Installation finished! ====='")
+${tab}${tab}- echo '====== Installation finished! ======'
+${tab}${tab}- echo '======== You can now reboot ========'")
 echo -e "${content}" > user-data
 mv user-data "${path}"/cubus/resources/source-files/custom/
 
