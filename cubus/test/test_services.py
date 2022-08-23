@@ -3,6 +3,7 @@ import unittest
 
 from cubus.business_logic.services import extract_packages, extract_docker_images, serialize_iso, get_docker_images, \
     serialize_user
+from webserver.settings import PASSWDSALT
 
 
 class Test(unittest.TestCase):
@@ -68,7 +69,7 @@ class Test(unittest.TestCase):
             'first_name': 'Mattia',
             'last_name': 'Zanichelli',
             'email': 'mattia.zanichelli@student.supsi.ch',
-            'password': crypt.crypt("pass", 'salt'),
+            'password': crypt.crypt("pass", PASSWDSALT),
             'creations': []
         }
         self.assertEqual(serialize_user(post_example), user)
@@ -86,7 +87,7 @@ class Test(unittest.TestCase):
             'first_name': 'Nome',
             'last_name': 'Cognome',
             'email': ' ',
-            'password': crypt.crypt("pass", 'salt'),
+            'password': crypt.crypt("pass", PASSWDSALT),
             'creations': []
         }
         self.assertNotEqual(serialize_user(post_example), user)
@@ -104,7 +105,7 @@ class Test(unittest.TestCase):
             'first_name': 'Mattia',
             'last_name': 'Zanichelli',
             'email': 'mattia.zanichelli@student.supsi.ch',
-            'password': crypt.crypt("pass", 'salt'),
+            'password': crypt.crypt("pass", PASSWDSALT),
             'creations': []
         }
         self.assertNotEqual(serialize_user(post_example), user)

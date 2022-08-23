@@ -77,4 +77,5 @@ class Test(unittest.TestCase):
         users.update_one(my_filter, new_value)
         user = users.find_one()
         self.assertEqual(user['first_name'], 'NewName')
+        users.delete_one(user)
 

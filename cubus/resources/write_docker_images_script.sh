@@ -19,7 +19,7 @@ if ! [[ \$(ping -c 3 8.8.8.8 2> /dev/null) ]]; then
     exit 0
 fi
 
-printf \"\n\n\"
+printf \"\nDone!\n\n\"
 printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
 echo \"Performing final installation setup\"
 printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs

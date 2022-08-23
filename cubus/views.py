@@ -8,7 +8,7 @@ from django.http import StreamingHttpResponse
 from django.shortcuts import render, redirect
 from pymongo import MongoClient
 
-from webserver.settings import MONGO_HOST, MONGO_PORT, MONGO_USERNAME, MONGO_PASS
+from webserver.settings import MONGO_HOST, MONGO_PORT, MONGO_USERNAME, MONGO_PASS, PASSWDSALT
 from .business_logic import services
 
 docker_images = services.read_docker_images()
@@ -87,7 +87,7 @@ def guide_page(request):
 def login_page(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        password = crypt.crypt(request.POST.get('password'), 'salt')
+        password = crypt.crypt(request.POST.get('password'), PASSWDSALT)
         user = users.find_one({"email": email, "password": password})
         if user is None:
             messages.error(request, 'This user does not exists!')

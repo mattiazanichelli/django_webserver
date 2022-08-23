@@ -32,6 +32,7 @@ MONGO_HOST = env('MONGO_DB_HOST')
 MONGO_PORT = env('MONGO_DB_PORT')
 MONGO_USERNAME = env('MONGO_DB_USERNAME')
 MONGO_PASS = env('MONGO_DB_PASSWORD')
+PASSWDSALT = env('PASSWDSALT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

@@ -6,6 +6,7 @@ import django.http
 import requests
 
 from ..models import OsType
+from webserver.settings import PASSWDSALT
 
 
 def extract_packages(body):
@@ -60,7 +61,7 @@ def serialize_user(post):
         'first_name': fields['first_name'],
         'last_name': fields['last_name'],
         'email': fields['email'],
-        'password': crypt.crypt(fields['password'], 'salt'),
+        'password': crypt.crypt(fields['password'], PASSWDSALT),
         'creations': [],
     }
     return user
