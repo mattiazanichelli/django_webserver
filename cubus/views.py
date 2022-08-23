@@ -63,6 +63,9 @@ def create_page(request):
 
 
 def download_page(request):
+    if 'authenticated' not in request.session.keys():
+        return redirect('index')
+
     if request.method == 'POST':
         user = request.session['user']
         file_name = user['creations'][-1]['name'] + ".iso"
@@ -100,6 +103,8 @@ def login_page(request):
                 return redirect('profile')
             elif request.session['next'] == 'create':
                 return redirect('create')
+            else:
+                return redirect('index')
 
     if request.method == 'GET':
         return render(request, 'login.html')

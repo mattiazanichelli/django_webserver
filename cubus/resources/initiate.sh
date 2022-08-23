@@ -38,7 +38,10 @@ ${tab}${tab}${tab}name: lvm
 ${tab}package_update: true
 ${tab}package_upgrade: true
 ${tab}late-commands:
-${tab}${tab}- echo '=== Please wait for additional setup ==='
+${tab}${tab}- echo '===================================='
+${tab}${tab}- echo '========= Almost finished! ========='
+${tab}${tab}- echo '= Wait for automatic configuration ='
+${tab}${tab}- echo '===================================='
 ${tab}${tab}- curtin in-target --target=/target -- apt-get update
 ${tab}${tab}- curtin in-target --target=/target -- apt-get upgrade -y
 #${tab}${tab}- cp /cdrom/custom/encrypt.sh /target/root
@@ -59,8 +62,10 @@ ${tab}${tab}- curtin in-target --target=/target -- bash /root/wait_cloud-init.sh
 ${tab}${tab}- cp /cdrom/custom/sembo.zip /target/root
 ${tab}${tab}- cp /cdrom/custom/.run_sembo.sh /target/root
 ${tab}${tab}- curtin in-target --target=/target -- chmod +x /root/.run_sembo.sh
+${tab}${tab}- echo '===================================='
 ${tab}${tab}- echo '====== Installation finished! ======'
-${tab}${tab}- echo '======== You can now reboot ========'")
+${tab}${tab}- echo '======== You can now reboot ========'
+${tab}${tab}- echo '===================================='")
 echo -e "${content}" > user-data
 mv user-data "${path}"/cubus/resources/source-files/custom/
 

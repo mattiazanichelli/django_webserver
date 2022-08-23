@@ -15,7 +15,7 @@ if test -f sembo.zip; then
 
   unzip sembo.zip
   rm -f sembo.zip
-  pip install -r sembo_app/requirements.txt
+  pip install -r sembo_app/requirements.txt --no-warn-script-location
 
   tot_cols=$(tput cols)
   tot_lines=$(tput lines)

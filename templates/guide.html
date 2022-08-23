@@ -97,6 +97,16 @@
                         <img src="{% static 'images/network_configuration.png' %}" alt="Network Configuration"/>
                     </p>
                     <p>
+                        If you are running the server on a virtual machine created with VirtualBox or VMware and you're
+                        experiencing problem during the installation, try to set the network via NAT instead of Bridge
+                        and try the installation again. Sometimes it happends that a bridged connection does't correctly set an IP
+                        to your machine, causing the installation to fail because of the lack of Internet connection.
+                        After the installation you can reassign a bridged connection to your virtual machine.
+                    </p>
+                    <p>
+                        <img src="{% static 'images/NATvsBridge.jpg' %}" width="600" height="500" alt="NAT and Bridge configuration"/>
+                    </p>
+                    <p>
                         If you choose to configure the storage manually, be careful to give to each partition enough space.
                         If you follow the minimum system requirements shown on the Home page,
                         you shouldn't have any problems. In case the installation fails, try to restart the installer and change the storage configuration.
