@@ -1,4 +1,3 @@
-# Create and activate Mongo database
 import unittest
 
 from pymongo import MongoClient
