@@ -121,7 +121,8 @@ def register_page(request):
             'email': user['email']
         }) is None:
             users.insert_one(user)
-        return redirect('profile')
+        next = request.session['next']
+        return redirect(next)
 
 
 def profile_page(request):
