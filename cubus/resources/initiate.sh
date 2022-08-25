@@ -88,7 +88,7 @@ sed -i "/packages/a \ \ \ \ - gnupg" "${path}"/cubus/resources/source-files/cust
 sed -i "/packages/a \ \ \ \ - curl" "${path}"/cubus/resources/source-files/custom/user-data
 sed -i "/packages/a \ \ \ \ - ca-certificates" "${path}"/cubus/resources/source-files/custom/user-data
 
-# Add packages required for running SeMBo (net-tools, unzip, python3-pip)
+# Add packages required for running Sembo (net-tools, unzip, python3-pip)
 sed -i "/packages/a \ \ \ \ - net-tools" "${path}"/cubus/resources/source-files/custom/user-data
 #sed -i "/packages/a \ \ \ \ - unzip" "${path}"/cubus/resources/source-files/custom/user-data
 #ed -i "/packages/a \ \ \ \ - python3-pip" "${path}"/cubus/resources/source-files/custom/user-data
