@@ -13,11 +13,11 @@ isoname=$(cat "${json}" | jq -r .name)
 # sudo apt install jq;
 
 # Execute scripts cascade
-source "${path}"/cubus/resources/initiate.sh 2> error \
-&& source "${path}"/cubus/resources/write_firstboot_setup_script.sh 2> error \
-&& source "${path}"/cubus/resources/write_docker_install_script.sh 2> error \
-&& source "${path}"/cubus/resources/write_docker_images_script.sh 2> error \
-&& source "${path}"/cubus/resources/write_wait_cloud-init_script.sh 2> error \
+source "${path}"/cubus/resources/initiate.sh 2>> error \
+&& source "${path}"/cubus/resources/write_firstboot_setup_script.sh 2>> error \
+&& source "${path}"/cubus/resources/write_docker_install_script.sh 2>> error \
+&& source "${path}"/cubus/resources/write_docker_images_script.sh 2>> error \
+&& source "${path}"/cubus/resources/write_wait_cloud-init_script.sh 2>> error \
 && source "${path}"/cubus/resources/xorriso.sh 2>&1;
 
 # Original with encryption script

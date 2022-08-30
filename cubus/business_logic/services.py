@@ -44,6 +44,9 @@ def serialize_iso(post):
         fields = post.dict()
     else:
         fields = post
+
+    if 'include_docker_images' not in fields:
+        fields['include_docker_images'] = 'off'
     iso = {
         'name': fields['isoName'],
         'os_type': OsType(int(fields['os_type'])).name.lower(),

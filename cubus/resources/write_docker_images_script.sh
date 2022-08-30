@@ -7,6 +7,9 @@ json=$(ls "${path}"/cubus/resources/*.json)
 content=(
 "#!/bin/bash
 
+# List users
+currentUser=\$(getent passwd | grep bash | grep home | awk -F: '{print \$1}')
+
 tot_cols=\$(tput cols)
 
 # Show final installation setup messages
@@ -15,7 +18,8 @@ echo \"Checking Internet connection\"
 printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
 
 if ! [[ \$(ping -c 3 8.8.8.8 2> /dev/null) ]]; then
-    whiptail --title \"Warning\" --msgbox \"Cannot connect to the Internet.\n\nPlease connect your system to complete the installation.\" 15 60
+    whiptail --title \"Warning\" --msgbox \"Cannot connect to the Internet.\n\nPlease connect your system and perform a reboot to complete the installation.\" 15 60
+    echo \"Connection error: no Internet connection available\" >> /home/\"\${currentUser}\"/.cubusLog
     exit 0
 fi
 
