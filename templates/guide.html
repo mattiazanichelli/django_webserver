@@ -150,17 +150,34 @@
                     <p>
                         As before, depending on the number of images you chose to pull, the size of them and your network connection, this process may take some time.
                     </p>
+                </li>
+                <li class="mb-4">
                     <p>
                         Every installation comes with Sembo included as well, a dashboard monitoring tool to operate remotely on your system.
-                        Give the installation some more time to download all the dependencies needed to run Sembo,
-                        then a meassage stating that the installation is completely finished will appear.
-                        You'll be able to access Sembo from a web browser with the IP of your machine.
+                        Give the installation some more time to download all the dependencies needed to run Sembo.
+                    </p>
+                    <p>
+                        You can always access Sembo in a browser by using the server IP address,
+                        followed by the port 8050. You can easily show the IP address of your custom server by running
+                        the command <i>&#60hostname -I&#62</i>
+                    </p>
+                </li>
+                <li class="mb-4">
+                    <p>
+                        In case you face any problems during the final installation steps, you can access a hidden file
+                        inside the home directory called '.cubusLog'. Inside you can find some log messages that can
+                        help you figure out what caused the automatic configuration to fail.
+                    </p>
+                    <p>
+                        When everything has been succesfully installed and configured, the following message will
+                        appear, showing the IP address and the port (8050) which you can use to access the Sembo monitoring
+                        application through a browser.
                     </p>
                     <p>
                         <img src="{% static 'images/final_message.png' %}" alt="Final Message"/>
                     </p>
                 </li>
-                <li class="mb-4">
+                <li>
                     <p>
                         Everything is done. You're ready to go!
                     </p>

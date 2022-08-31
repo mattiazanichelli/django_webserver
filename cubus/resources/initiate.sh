@@ -22,8 +22,8 @@ autoinstall:
 ${tab}version: 1
 ${tab}refresh-installer:  # start with an up-to-date installer
 ${tab}update: yes
+${tab}locale: en_US.UTF-8
 ${tab}interactive-sections:  # Install groups listed here will wait for user input
-${tab}${tab}- locale
 ${tab}${tab}- keyboard
 ${tab}${tab}- network
 ${tab}${tab}- identity
