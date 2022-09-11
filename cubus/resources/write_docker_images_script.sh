@@ -19,7 +19,7 @@ printf \"%\$(tput cols)s\" | sed \"s/ /=/g\" | xargs
 
 if ! [[ \$(ping -c 3 8.8.8.8 2> /dev/null) ]]; then
     whiptail --title \"Warning\" --msgbox \"Cannot connect to the Internet.\n\nPlease connect your system and perform a reboot to complete the installation.\" 15 60
-    echo \"Connection error: no Internet connection available\" >> /home/\"\${currentUser}\"/.cubusLog
+    echo \"Connection error: no Internet connection available. Timestamp: \$(date)\" >> /home/\"\${currentUser}\"/.cubusLog
     exit 0
 fi
 

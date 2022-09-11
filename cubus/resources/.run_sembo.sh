@@ -13,7 +13,7 @@ if test -f sembo.zip; then
 
   if ! [[ $(ping -c 3 8.8.8.8 2> /dev/null) ]]; then
     whiptail --title "Warning" --msgbox "Cannot connect to the Internet.\n\nPlease connect your system and perform a reboot to install Sembo." 15 60
-    echo "Connection error: no Internet connection available" >> /home/"${currentUser}"/.cubusLog
+    echo "Connection error: no Internet connection available. Timestamp: $(date)" >> /home/"${currentUser}"/.cubusLog
     exit 0
   fi
 
@@ -22,6 +22,12 @@ if test -f sembo.zip; then
   pip install -r sembo_app/requirements.txt --no-warn-script-location 2>> /home/"${currentUser}"/.cubusLog
 
   ip_addr=$(hostname -I | awk '{print $1}')
+  export NEWT_COLORS='
+  window=,white
+  border=,white
+  textbox=,white
+  button=,white
+  '
   whiptail --title "Done!" --msgbox "The system is now ready to use!\n\nYou can access Sembo from http://${ip_addr}:8050 after closing this message" 15 60
   echo "" > /home/"${currentUser}"/.cubusLog
 fi
