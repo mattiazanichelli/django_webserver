@@ -9,7 +9,9 @@ cubus = client['cubus']
 users = cubus['users']
 
 '''
+#######################################
 REMEMBER TO START DOCKER-COMPOSE FIRST!
+#######################################
 '''
 
 
